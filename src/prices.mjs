@@ -83,26 +83,17 @@ function createApp(database) {
 
   function isMonday(date, date2) {
     return date2.dayOfWeek === 1;
-    /*return date.getDay() === 1;*/
   }
 
   function isHoliday(date, date2) {
     const holidays = database.getHolidays();
     for (let row of holidays) {
-      let holiday = new Date(row.holiday);
       let holiday2 = Temporal.PlainDate.from(row.holiday)
       if (
-        date &&
-        date.getFullYear() === holiday.getFullYear() &&
-        date.getMonth() === holiday.getMonth() &&
-        date.getDate() === holiday.getDate()
-        &&
-        //Same checks for Temporal.PlainDate
         date2 &&
         date2.year === holiday2.year &&
         date2.month === holiday2.month &&
         date2.day === holiday2.day
-
       ) {
         return true;
       }
