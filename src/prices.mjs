@@ -96,6 +96,13 @@ function createApp(database) {
         date.getFullYear() === holiday.getFullYear() &&
         date.getMonth() === holiday.getMonth() &&
         date.getDate() === holiday.getDate()
+        &&
+        //Same checks for Temporal.PlainDate
+        date2 &&
+        date2.year === holiday2.year &&
+        date2.month === holiday2.month &&
+        date2.day === holiday2.day
+
       ) {
         return true;
       }
